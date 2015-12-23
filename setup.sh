@@ -22,7 +22,7 @@ if [ "`gpg --list-keys |grep $keyname`" = "" ]; then
 	echo "setting up gpg backup encryption key"
 	gpg --import /opt/sf-gpg/keys/$keyname.pub
 
-	if [ "$SF_UNATTENDED" != "" ]; then
+	if [ "$SF_UNATTENDED" = "" ]; then
 		echo "#######################################################"
 		echo "# Public key imported. Now enter 'trust' command at   #"
 		echo "# the below command prompt, and set trust level to 5. #"
