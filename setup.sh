@@ -22,12 +22,14 @@ if [ "`gpg --list-keys |grep $keyname`" = "" ]; then
 	echo "setting up gpg backup encryption key"
 	gpg --import /opt/sf-gpg/keys/$keyname.pub
 
-	echo "#######################################################"
-	echo "# Public key imported. Now enter 'trust' command at   #"
-	echo "# the below command prompt, and set trust level to 5. #"
-	echo "#######################################################"
+	if [ "$SF_UNATTENDED" != "" ]; then
+		echo "#######################################################"
+		echo "# Public key imported. Now enter 'trust' command at   #"
+		echo "# the below command prompt, and set trust level to 5. #"
+		echo "#######################################################"
 
-	gpg --edit-key $keyname
+		gpg --edit-key $keyname
+	fi
 
 	if [ "$OSTYPE" = "redhat" ]; then
 		echo "applying fix for RHEL 6.x crontab bug"
