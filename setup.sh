@@ -20,7 +20,7 @@ keyname=`gpg_backup_key`
 
 if [ "`gpg --list-keys |grep $keyname`" = "" ]; then
 	echo "setting up gpg backup encryption key"
-	gpg --import /opt/sf-gpg/keys/$keyname.pub
+	gpg --import /opt/farm/ext/gpg/keys/$keyname.pub
 
 	if [ "$SF_UNATTENDED" = "" ]; then
 		echo "#######################################################"
