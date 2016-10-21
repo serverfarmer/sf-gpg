@@ -10,6 +10,14 @@ if [ "$HWTYPE" = "container" ]; then
 fi
 
 
+if [ ! -x /usr/bin/gpg ]; then
+	if [ -x /usr/local/bin/gpg ]; then
+		ln -s /usr/local/bin/gpg /usr/bin/gpg  # FreeBSD
+	elif [ -x /usr/pkg/bin/gpg ]; then
+		ln -s /usr/pkg/bin/gpg /usr/bin/gpg  # NetBSD
+	fi
+fi
+
 if [ -d /.gnupg ] && [ ! -h /.gnupg ] && [ ! -d /root/.gnupg ]; then
 	echo "applying fix for Proxmox VE 3.x key setup bug"
 	mv -f /.gnupg /root
