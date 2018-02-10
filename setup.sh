@@ -24,6 +24,12 @@ if [ -d /.gnupg ] && [ ! -h /.gnupg ] && [ ! -d /root/.gnupg ]; then
 	ln -sf /root/.gnupg /.gnupg
 fi
 
+if [ "$OSTYPE" = "qnap" ] && [ ! -d /root/.gnupg ] && [ ! -h /root/.gnupg ]; then
+	echo "applying fix for QNAP"
+	mkdir -p /etc/config/.gnupg
+	ln -sf /etc/config/.gnupg /root/.gnupg
+fi
+
 keyname=`gpg_backup_key`
 
 if [ "`gpg --list-keys |grep $keyname`" = "" ]; then
