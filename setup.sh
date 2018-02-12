@@ -27,6 +27,8 @@ fi
 if [ "$OSTYPE" = "qnap" ] && [ ! -d /root/.gnupg ] && [ ! -h /root/.gnupg ]; then
 	echo "applying fix for QNAP"
 	mkdir -p /etc/config/.gnupg
+	rm -rf /share/homes/admin/.gnupg
+	ln -sf /etc/config/.gnupg /share/homes/admin/.gnupg
 	ln -sf /etc/config/.gnupg /root/.gnupg
 fi
 
