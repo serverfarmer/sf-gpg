@@ -11,7 +11,9 @@ fi
 
 
 if [ ! -x /usr/bin/gpg ]; then
-	if [ -x /usr/local/bin/gpg ]; then
+	if [ -x /usr/bin/gpg1 ]; then
+		ln -s /usr/bin/gpg1 /usr/bin/gpg  # Debian 9
+	elif [ -x /usr/local/bin/gpg ]; then
 		ln -s /usr/local/bin/gpg /usr/bin/gpg  # FreeBSD
 	elif [ -x /usr/pkg/bin/gpg ]; then
 		ln -s /usr/pkg/bin/gpg /usr/bin/gpg  # NetBSD
