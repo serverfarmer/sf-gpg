@@ -1,5 +1,5 @@
-#!/bin/sh
-. /opt/farm/scripts/functions.custom
+#!/bin/bash
+. /opt/farm/ext/keys/functions
 
 
 keyname=`gpg_backup_key`
