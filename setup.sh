@@ -1,8 +1,6 @@
-#!/bin/bash
-. /opt/farm/ext/keys/functions
+#!/bin/sh
 
-
-keyname=`gpg_backup_key`
+keyname=`/opt/farm/ext/keys/get-gpg-backup-key.sh`
 
 if [ "$keyname" != "" ]; then
 	/opt/farm/ext/gpg/setup-key.sh $keyname
